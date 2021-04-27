@@ -17,7 +17,7 @@ public class StringFrequency {
         {
             if(str.charAt(i)>'0' &&  str.charAt(i)<='9')
             {
-                  int num = Integer.parseInt(String.valueOf(str.charAt(i)));
+                  int num = Integer.parseInt(String.valueOf(str.charAt(i))); // Character.getNumericValue(str.charAt(i));
                   while(num>0)
                   {
                      System.out.print(str.charAt(i-1));
