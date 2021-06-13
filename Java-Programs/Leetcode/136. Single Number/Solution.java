@@ -29,3 +29,22 @@ class Solution {
         return xor;
     }
 }
+
+
+//using arraylist
+
+class Solution {
+    public int singleNumber(int[] nums) {
+       List<Integer> l = new ArrayList<Integer>();
+        for(int i=0;i<nums.length;i++)
+        {
+            if(!l.contains(nums[i])){
+                l.add(nums[i]);
+            }
+            else{
+                l.remove(new Integer(nums[i]));
+            }
+        }
+        return l.get(0);
+    }
+}
