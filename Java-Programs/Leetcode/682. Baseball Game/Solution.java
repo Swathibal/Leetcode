@@ -1,0 +1,78 @@
+// You are keeping score for a baseball game with strange rules. The game consists of several rounds, where the scores of past rounds may affect future rounds' scores.
+
+// At the beginning of the game, you start with an empty record. You are given a list of strings ops, where ops[i] is the ith operation you must apply to the record and is one of the following:
+
+// An integer x - Record a new score of x.
+// "+" - Record a new score that is the sum of the previous two scores. It is guaranteed there will always be two previous scores.
+// "D" - Record a new score that is double the previous score. It is guaranteed there will always be a previous score.
+// "C" - Invalidate the previous score, removing it from the record. It is guaranteed there will always be a previous score.
+// Return the sum of all the scores on the record.
+
+ 
+
+// Example 1:
+
+// Input: ops = ["5","2","C","D","+"]
+// Output: 30
+// Explanation:
+// "5" - Add 5 to the record, record is now [5].
+// "2" - Add 2 to the record, record is now [5, 2].
+// "C" - Invalidate and remove the previous score, record is now [5].
+// "D" - Add 2 * 5 = 10 to the record, record is now [5, 10].
+// "+" - Add 5 + 10 = 15 to the record, record is now [5, 10, 15].
+// The total sum is 5 + 10 + 15 = 30.
+
+class Solution {
+    public int calPoints(String[] ops) {
+        List<Integer> l = new ArrayList<Integer>();
+        int sum = 0;
+        for(String s:ops)
+        {
+            
+            if(s.equals("C"))
+                l.remove(l.size()-1);
+            else if(s.equals("D"))
+                l.add(2*l.get(l.size()-1));
+            else if(s.equals("+"))
+                l.add(l.get(l.size()-1)+l.get(l.size()-2));
+            else
+                l.add(Integer.parseInt(s));
+        }
+        for(int i : l)
+        {
+            sum+=i;
+        }
+        return sum;
+    }
+}
+
+(or)
+
+class Solution {
+    public int calPoints(String[] ops) {
+        List<Integer> l = new ArrayList<Integer>();
+        int sum = 0;
+        for(String s : ops)
+        {
+            try{
+                int i = Integer.parseInt(s);
+                l.add(i);
+            }
+            catch(Exception e)
+            {
+                if(s.equals("C"))
+                    l.remove(l.size()-1);
+                else if(s.equals("D"))
+                    l.add(2*l.get(l.size()-1));
+                else
+                    l.add(l.get(l.size()-1)+l.get(l.size()-2));
+            }
+        }
+        
+        for(int i : l)
+        {
+            sum+=i;
+        }
+        return sum;
+    }
+}
