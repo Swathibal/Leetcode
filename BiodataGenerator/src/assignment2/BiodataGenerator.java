@@ -373,11 +373,7 @@ public class BiodataGenerator extends Frame implements ActionListener,ItemListen
   	        	 //creating a Paragraph object
   	        	 Paragraph para = new Paragraph("BioData");
   	        	 
-  	        	 //creating a Image Object
-//  	        	 Image Img1 = Image.getInstance(name);
-//  	        	 Img1.setAbsolutePosition(50,50);
-//  	        	 Img1.scaleAbsolute(100,100);
-//  	        	 doc.add((Element) Img1);
+  	        	 
       	        
   	        	 //adding the fields that is been got from the biodata form
   	        	 doc.add(para); 
