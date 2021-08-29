@@ -59,11 +59,10 @@ public class BiodataGenerator extends Frame implements ActionListener,ItemListen
     	t8 = new TextField();
     	t9 = new TextField();
     	t10 = new TextField(); 
-    	t11 = new TextField("No file is selected");
+    	//t11 = new TextField("No file is selected");
     	
     	// object for buttons
     	b = new Button("Submit");
-    	b1 = new Button("Upload Image");
     	b2 = new Button("Download in pdf");
     	
     	//objects of choice to get the district,state,country 
@@ -240,7 +239,6 @@ public class BiodataGenerator extends Frame implements ActionListener,ItemListen
     	
     	//add the buttons to the frame
     	add(b);
-    	add(b1);
     	add(b2);
     	
     	//registering the event happened in the checkbox in selecting gender
@@ -254,7 +252,6 @@ public class BiodataGenerator extends Frame implements ActionListener,ItemListen
     	
     	//registering the event happened in the button 
     	b.addActionListener(this);
-    	b1.addActionListener(this);
     	b2.addActionListener(this);
     	
     	//Listener to close the frame
@@ -312,54 +309,13 @@ public class BiodataGenerator extends Frame implements ActionListener,ItemListen
     public void actionPerformed(ActionEvent e)
     {    	
     	
-    	String imgurl="";
-    	InputStream in=null;
-    	
-    	//b1 -> uploading image
-    	if(e.getSource()==b1)
-    	{
-    		
-    		//JFileChooser to choose the images from the system device
-    	      JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-    	      j.setAcceptAllFileFilterUsed(false);
-    	      j.setDialogTitle("Select JPG images");
-    	      
-    	      //making filter in selecting only the jpg images
-    	      FileNameExtensionFilter restrict = new FileNameExtensionFilter("Only .jpg files", "jpg"); 
-              j.addChoosableFileFilter(restrict); 
-              
-              //Open the dialog box
-    	      int r = j.showOpenDialog(null);
-    	      
-    	      //selecting the file image
-    	      if( r == JFileChooser.APPROVE_OPTION)
-    	      {
-    		          t11.setText(j.getSelectedFile().getName());
-    	              imgurl = j.getSelectedFile().getAbsolutePath();
-    		 
-    	      }
-    	      else
-    	      {
-    		          t11.setText("No file is selected");
-    	      }
-    	
-    	
-    	
-    	      try
-    	      {
-		 	          in = new FileInputStream(imgurl);
-		      }  
-    	      catch (FileNotFoundException e2) 
-    	      {
-			         e2.printStackTrace();
-		      }
-    	}
+    
     	
     	//b2->downloading the pdf
     	if(e.getSource()==b2);
 		{
 			
-			String name = "images.jpg";
+			
 		
 			//creating the pdf document
 			Document doc = new Document();
